@@ -10,7 +10,14 @@ export class AppComponent {
 
   photos = [];
   constructor(http: HttpClient) {
-    console.log(http);
-}
+
+    http
+    .get<Object[]>('http://localhost:3000/flavio/photos')
+    .subscribe(
+        photos => this.photos = photos,
+        err => console.log(err)
+    );
+
+  }
 
 }
