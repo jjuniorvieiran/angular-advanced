@@ -12,6 +12,7 @@ import { Photo } from '../photo/photo';
 export class PhotoListComponent implements OnInit {
 
   photos: Photo[] = [];
+  filter: string = '';
 
   constructor(
     private photoService: PhotoService,
@@ -23,7 +24,7 @@ export class PhotoListComponent implements OnInit {
       .snapshot
       .params
       .userName;
-      
+
     this.photoService
       .listFromUser(userName)
       .subscribe(photos => this.photos = photos);
